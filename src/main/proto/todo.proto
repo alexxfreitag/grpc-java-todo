@@ -13,6 +13,12 @@ message CreateTodoRequest {
   string description = 1;
 }
 
+message TodoList {
+  repeated Todo todos = 1;
+}
+
 service TodoService {
   rpc createTodo(CreateTodoRequest) returns (Todo) {}
+  rpc createTodoClientStreaming(stream CreateTodoRequest) returns (TodoList) {}
+  rpc createTodoBidirectionalStreaming(stream CreateTodoRequest) returns (stream Todo) {}
 }
