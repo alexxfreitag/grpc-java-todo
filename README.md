@@ -92,10 +92,25 @@ service TodoService {
 ### Service definition
 Quando definimos quais as interfaces do `service` que iremos implementar, pode ser especificado qual o tipo da requisição/resposta, sendo as opções:
 
-- _Unary_: uma chamada RPC normal, onde o cliente envia uma requisição para o servidor e aguarda uma resposta.
-- _Server streaming_: cliente envia uma única requisição para o servidor e recebe a resposta do servidor em formato _streaming_, no qual o cliente irá ler até não haver mais mensagens.
-- _Client streaming_: cliente envia uma sequência de mensagens para o servidor que, por sua vez, só vai processar e retornar a resposta quando o cliente terminar de enviar.
-- _Bidirectional streaming_: tanto o cliente quanto o servidor vão enviar suas mensagens em formato _streaming_, de forma independente.
+  - _Unary_: uma chamada RPC normal, onde o cliente envia uma requisição para o servidor e aguarda uma resposta.
+    ```protobuf
+    rpc Method(Request) returns (Response) {}
+    ```
+
+  - _Server streaming_: cliente envia uma única requisição para o servidor e recebe a resposta do servidor em formato _streaming_, no qual o cliente irá ler até não haver mais mensagens.
+    ```protobuf
+    rpc Method(Request) returns (stream Response) {}
+    ```
+
+  - _Client streaming_: cliente envia uma sequência de mensagens para o servidor que, por sua vez, só vai processar e retornar a resposta quando o cliente terminar de enviar.
+    ```protobuf
+    rpc Method(stream Request) returns (ResponseList) {}
+    ```
+  
+  - _Bidirectional streaming_: tanto o cliente quanto o servidor vão enviar suas mensagens em formato _streaming_, de forma independente.
+    ```protobuf
+    rpc Method(stream Request) returns (stream Response) {}
+    ```  
 
 ## Demo
 Abaixo, capturas de telas que demonstram de forma mais visual como é, na prática, feito as requisições gRPC. Foi utilizado o programa Postman como _client_.
