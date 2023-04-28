@@ -7,6 +7,15 @@ Nesse projeto existe um _client_ e um _server_. Para simular uma chamada gRPC, √
 ```bash
 $ ./gradlew generateProto
 ```
+Para rodar o _server_:
+```bash
+$ ./gradlew runServer
+```
+
+Para rodar o _client_ que ir√° executar uma chamada teste:
+```bash
+$ ./gradlew runClient
+```
 
 ## Conceitos
 
