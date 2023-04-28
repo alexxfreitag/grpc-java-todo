@@ -5,7 +5,7 @@ import io.grpc.ManagedChannelBuilder;
 
 public class TodoClient {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052)
                 .usePlaintext()
                 .build();
