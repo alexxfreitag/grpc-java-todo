@@ -44,3 +44,17 @@ protobuf {
         }
     }
 }
+
+task runServer(type: JavaExec) {
+    group="run"
+    description = "Run server"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.devfreitag.TodoServer"
+}
+
+task runClient(type: JavaExec) {
+    group="run"
+    description = "Run client"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.devfreitag.TodoClient"
+}
